@@ -26,7 +26,7 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
 
             <ul className='flex flex-row gap-4'>
                 <li><Link id='home' href={"/"}> Home</Link></li>
-                <li><Link id='horario' href={"/"}> Horário </Link></li>
+                <li><Link id='horario' href={"/horario"}> Horário </Link></li>
                 <li><Link id='materias' href={"/"}> Matérias </Link></li>
                 <li><Link id='notas' href={"/"}> Notas </Link></li>
             </ul>
