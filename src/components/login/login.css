@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.formLogin div {
+    @apply relative text-lg
+}
+
+.formLogin div .loginIcons {
+    @apply text-quaternaria absolute top-3.5 left-1.5 cursor-pointer
+}
+
+.formLogin div input {
+    @apply  ps-8 py-2 rounded-xl bg-secundaria w-full border border-quaternaria border-opacity-50
+}
+
+.formLogin div input::placeholder {
+    @apply text-gray-400
+}
+
+.formLogin div p {
+    @apply text-sm
+}

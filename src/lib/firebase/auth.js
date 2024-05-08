@@ -5,9 +5,14 @@ import {
     signOut,
     onAuthStateChanged
 } from "firebase/auth";
+import { redirect } from "next/navigation";
 
-export const HandleLogin = () => {
+export const HandleGoogleLogin = () => {
     const provider = new GoogleAuthProvider()
+
+    provider.setCustomParameters({
+        'login_hint': 'user@example.com'
+      });
 
     signInWithPopup(auth, provider)
         .then((res) => {
@@ -18,27 +23,22 @@ export const HandleLogin = () => {
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            const email = error.customData.email;
-            const credential = GoogleAuthProvider.credentialFromError(error);
-
             console.log(errorCode)
             console.log(errorMessage)
-            console.log(email)
-            console.log(credential)
         });
 }
 
 export const HandleLogout = () => {
     signOut(auth)
     .then(() => {
-        console.log("Logout efetuado com sucesso")
+        window.alert('Logout efetuado com sucesso')
     }).catch((error) => {
         console.log(error)
     }) 
 }
 
-export const HandleActualUser = () => {
-    onAuthStateChanged(auth, (user) => {
+export const HandleActualUser = async () => {
+     onAuthStateChanged(auth, (user) => {
         if(user) {
             console.log(user);
         }

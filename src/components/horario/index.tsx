@@ -52,7 +52,7 @@ const HorarioClient: React.FC<Props> = ({ }) => {
                     <div>
                         <label htmlFor="materias">Matéria: </label>
                         {materias.length > 0 ? (<select required name="materias" id="materias" onChange={HandleChange}>
-                            <option disabled selected hidden>Insira a Matéria</option>
+                            <option disabled>Insira a Matéria</option>
                             {materias.map((materia, index) => (
                                 <option value={materia} key={index}>{materia}</option>
                             ))}
@@ -67,7 +67,7 @@ const HorarioClient: React.FC<Props> = ({ }) => {
                     <div>
                         <label htmlFor="dia">Dia: </label>
                         <select required name="dia" id="dia" onChange={HandleChange}>
-                            <option disabled selected hidden>Insira o Dia da Semana</option>
+                            <option disabled>Insira o Dia da Semana</option>
                             <option value="segunda">Segunda-Feira</option>
                             <option value="terca">Terça-Feira</option>
                             <option value="quarta">Quarta-Feira</option>

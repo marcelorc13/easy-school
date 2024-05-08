@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { IconType } from "react-icons";
 import Link from 'next/link';
+import { IoLogOutOutline } from "react-icons/io5";
+import { HandleLogout } from '@/lib/firebase/auth';
 
 interface Props {
     Icone: React.ReactElement;
@@ -31,8 +32,9 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
                 <li><Link id='notas' href={"/"}> Notas </Link></li>
             </ul>
 
-            <div>
+            <div className='flex flex-row gap-2 items-center'>
                 <p>Perfil</p>
+                <IoLogOutOutline className='cursor-pointer text-xl' onClick={HandleLogout} />
             </div>
         </header>
     );
