@@ -1,11 +1,35 @@
+import { object } from "zod";
 import { auth } from "./firebase";
 import {
     GoogleAuthProvider,
     signInWithPopup,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
 } from "firebase/auth";
-import { redirect } from "next/navigation";
+
+export const HandleCreateUser = (data) => {
+    createUserWithEmailAndPassword(auth, data.email, data.senha)
+    .then(() => {
+        console.log("Usuario criado com sucesso")
+        console.log(auth.currentUser)
+    }).catch((error) => {
+        console.log(error)
+    })
+
+}
+
+export const HandleEmailLogin = (data) => {
+    signInWithEmailAndPassword(auth, data.email, data.senha)
+    .then((userCredential) => {
+        console.log("Logado com sucesso")
+        console.log(userCredential.user)
+    }).catch((error) => {
+        console.log(error.message)
+
+    })
+}
 
 export const HandleGoogleLogin = () => {
     const provider = new GoogleAuthProvider()

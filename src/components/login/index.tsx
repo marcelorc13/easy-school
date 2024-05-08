@@ -3,7 +3,7 @@
 import "./login.css"
 import { useState, useEffect } from 'react';
 import Link from "next/link";
-import { HandleActualUser, HandleGoogleLogin } from "@/lib/firebase/auth"
+import { HandleEmailLogin, HandleGoogleLogin } from "@/lib/firebase/auth"
 import { IoAtSharp, IoLockClosedOutline, IoLogoGoogle } from "react-icons/io5";
 
 interface UserType {
@@ -27,12 +27,13 @@ const LoginClient = () => {
 
     const HandleSubmit = (e: any) => {
         e.preventDefault();
+        HandleEmailLogin(user);
     }
 
     return (
         <main className='flex flex-col items-center justify-center w-full h-screen'>
             <div className="flex flex-col gap-2 items-center mb-4">
-                <h1 className="text-4xl font-semibold">Login</h1>
+                <h1 className="text-3xl font-semibold">Login</h1>
                 <h2 className="text-sm font-medium">Seja bem-vindo novamente!</h2>
             </div>
 
