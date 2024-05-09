@@ -4,34 +4,16 @@ import "./cadastro.css"
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { HandleCreateUser } from "@/lib/firebase/auth"
-import { IoAtSharp, IoLockClosedOutline, IoPersonOutline, IoBusinessOutline } from "react-icons/io5";
-
-import { z } from "zod";
+import { IoAtSharp, IoLockClosedOutline, IoPersonOutline, IoBusinessOutline, IoBookOutline } from "react-icons/io5";
+import { CadastroSchema, UserType } from "@/utils/validarCadastro";
 
 const CadastroClient = () => {
-
-    const CadastroSchema = z.object({
-        nome: z.string().min(3).max(20),
-        sobrenome: z.string().min(3).max(25),
-        instituicao: z.string().min(3).max(20),
-        email: z
-            .string()
-            .email("Insira uma forma válida de Email")
-            .trim(),
-        senha: z
-            .string()
-            .min(8, "A senha deve conter no minimo 8 caracteres")
-            .max(16, "A senha deve conter no maximo 16 caracteres")
-            .regex(/[0-9]/, "Necessita conter pelo menos 1 número")
-            .trim()
-    })
-
-    type UserType = z.infer<typeof CadastroSchema>
 
     const [user, setUser] = useState<UserType>({
         nome: '',
         sobrenome: '',
         instituicao: '',
+        curso: '',
         email: '',
         senha: ''
     })
@@ -45,8 +27,10 @@ const CadastroClient = () => {
 
     const HandleSubmit = (e: any) => {
         e.preventDefault();
-        HandleCreateUser(user),
-        console.log(user)
+
+        CadastroSchema.parse(user)
+        HandleCreateUser(user);
+        console.log(user);
     }
 
     return (
@@ -61,6 +45,11 @@ const CadastroClient = () => {
                         <input required onChange={HandleChange} type="text" placeholder='Nome' name="nome" id="nome" />
                         <label htmlFor="nome"><IoPersonOutline className='loginIcons text-quaternaria' /></label>
                         <input required onChange={HandleChange} type="text" placeholder='Sobrenome' name="sobrenome" id="sobrenome" />
+                    </div>
+
+                    <div>
+                        <label htmlFor="curso"><IoBookOutline className='loginIcons' /></label>
+                        <input required onChange={HandleChange} type="text" placeholder='Curso' name="curso" id="curso" />
                     </div>
 
                     <div>
