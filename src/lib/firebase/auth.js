@@ -8,7 +8,6 @@ import {
     signInWithEmailAndPassword
 } from "firebase/auth";
 import { AddProfileInfo } from "./db"
-import { redirect } from "next/navigation";
 
 export const HandleCreateUser = async (data) => {
     await createUserWithEmailAndPassword(auth, data.email, data.senha)
@@ -62,12 +61,14 @@ export const HandleLogout = () => {
 }
 
 export const HandleActualUser = async () => {
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            console.log(user);
-        }
-        else {
-            console.log("Sem usuário Logado")
-        }
+    return new Promise((resolve, reject) => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                resolve(true)
+            }
+            else {
+                reject(false)
+            }
+        })
     })
 }
