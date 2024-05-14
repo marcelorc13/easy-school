@@ -31,13 +31,13 @@ const LoginClient = () => {
     }
 
     return (
-        <main className='flex flex-col items-center justify-center w-full h-screen'>
+        <main className='flex flex-col items-center pt-8 md:pt-0 md:justify-center w-full h-screen'>
             <div className="flex flex-col gap-2 items-center mb-4">
                 <h1 className="text-3xl font-semibold">Login</h1>
                 <h2 className="text-sm font-medium">Seja bem-vindo novamente!</h2>
             </div>
 
-            <div className='flex flex-col gap-4 rounded-2xl bg-secundaria shadow-xl px-4'>
+            <div className='flex flex-col gap-4 md:rounded-2xl w-full bg-secundaria shadow-xl md:px-4'>
                 <div className='pt-10 flex justify-center'>
                     <button className="bg-primaria px-6 py-2 rounded-lg flex flex-row gap-1 items-center" onClick={HandleGoogleLogin}> <IoLogoGoogle />
                         Login com Google
@@ -48,7 +48,7 @@ const LoginClient = () => {
                     OU
                 </div>
 
-                <form onSubmit={HandleSubmit} className="formLogin flex flex-col gap-4 px-20 pb-10">
+                <form onSubmit={HandleSubmit} className="formLogin flex flex-col gap-4 px-4 :md:px-20 pb-10">
                     <div>
                         <label htmlFor="email"><IoAtSharp className='loginIcons' /></label>
                         <input onChange={HandleChange} type="email" placeholder='exemplo@email.com' name="email" id="email" />

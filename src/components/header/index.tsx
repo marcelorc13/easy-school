@@ -19,7 +19,6 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
     const HandleList = () => {
         setEncolhido(encolhido ? false : true)
         setIcone(encolhido ? <IoClose /> : <IoReorderThreeSharp />)
-        console.log(destaque)
     }
 
     useEffect(() => {
@@ -35,9 +34,9 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
 
 
     return (
-        <header className={`flex flex-col items-center ${!encolhido ? 'h-screen' : 'h-auto'} md:h-auto md:flex-row justify-between pb-12 py-10 md:py-4 px-8 text-2xl md:text-xl`}>
+        <header className={`flex flex-col items-center ${!encolhido ? 'h-screen' : 'h-auto'} md:h-auto md:flex-row justify-between pb-12 py-10 md:py-6 px-8 text-2xl md:text-xl`}>
             <div className='flex items-center justify-between w-full md:w-auto md:justify-center'>
-                {encolhido ? Icone : <span className='text-base'>Menu</span>}
+                {Icone}
                 <button className={`md:hidden text-2xl transform transition-transform ${encolhido ? 'rotate-0' : 'rotate-180'}`} onClick={HandleList}> {icone}  </button>
             </div>
 
@@ -50,9 +49,9 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
                         <li><Link className={destaque === 'notas' ? 'destacado' : ''} href={"/"}> Notas </Link></li>
                     </ul>
 
-                    <div className='flex flex-col md:flex-row md:gap-2 items-center text-lg md:text-xl'>
-                        <p><Link href={'/'}>Perfil</Link></p>
-                        <div className='flex items-center gap-1 md:gap-0'><p className='md:hidden'>Logout</p> <IoLogOutOutline className='cursor-pointer text-2xl' onClick={HandleLogout} /></div>
+                    <div className='flex flex-col md:flex-row md:gap-2 items-center md:text-xl'>
+                        <p><Link className={destaque === 'perfil' ? 'destacado' : ''} href={'/perfil'}>Perfil</Link></p>
+                        <div className='flex items-center gap-1 md:gap-0'><label htmlFor='logout' className='md:hidden'>Logout</label> <IoLogOutOutline className='cursor-pointer text-2xl' id='logout' onClick={HandleLogout} /></div>
                     </div>
                 </>
 

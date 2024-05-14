@@ -34,13 +34,13 @@ const CadastroClient = () => {
     }
 
     return (
-        <main className='flex flex-col items-center justify-center w-full h-screen'>
+        <main className='flex flex-col items-center pt-8 md:pt-0 md:justify-center w-full h-screen'>
             <div className="flex flex-col gap-2 items-center mb-4">
                 <h1 className="text-3xl font-semibold">Cadastre-se</h1>
                 <h2 className="text-sm font-medium">Facilite sua vida acadêmica!</h2>
             </div>
-            <div className='flex flex-col gap-2 rounded-2xl bg-secundaria shadow-xl px-4'>
-                <form onSubmit={HandleSubmit} className="formLogin flex flex-col gap-4 px-20 py-10">
+            <div className='flex flex-col gap-2 md:rounded-2xl bg-secundaria shadow-xl w-full md:px-4'>
+                <form onSubmit={HandleSubmit} className="formLogin flex flex-col gap-4 px-4 md:px-20 py-10">
                     <div className="flex flex-row justify-between gap-1">
                         <input required onChange={HandleChange} type="text" placeholder='Nome' name="nome" id="nome" />
                         <label htmlFor="nome"><IoPersonOutline className='loginIcons text-quaternaria' /></label>
