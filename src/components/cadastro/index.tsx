@@ -5,11 +5,11 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { HandleCreateUser } from "@/lib/firebase/auth"
 import { IoAtSharp, IoLockClosedOutline, IoPersonOutline, IoBusinessOutline, IoBookOutline } from "react-icons/io5";
-import { CadastroSchema, UserType } from "@/utils/validarCadastro";
+import { CadastroSchema, CadastroUserType } from "@/utils/auth/validarForms";
 
 const CadastroClient = () => {
 
-    const [user, setUser] = useState<UserType>({
+    const [user, setUser] = useState<CadastroUserType>({
         nome: '',
         sobrenome: '',
         instituicao: '',
@@ -30,7 +30,7 @@ const CadastroClient = () => {
 
         CadastroSchema.parse(user)
         HandleCreateUser(user);
-        console.log(user);
+        //console.log(user);
     }
 
     return (

@@ -12,7 +12,7 @@ export const CadastroSchema = z.object({
         .max(50, "O campo deve conter no máximo 50 caracteres"),
     instituicao: z.string()
         .min(3, "O campo deve conter no minimo 3 caracteres")
-        .max(20, "O campo deve conter no máximo 20 caracteres"),
+        .max(30, "O campo deve conter no máximo 20 caracteres"),
     email: z
         .string()
         .email("Insira uma forma válida de Email")
@@ -26,4 +26,21 @@ export const CadastroSchema = z.object({
         .trim()
 })
 
-export type UserType = z.infer<typeof CadastroSchema>
+export type CadastroUserType = z.infer<typeof CadastroSchema>
+
+export const EditarSchema = z.object({
+    nome: z.string()
+        .min(3, "O campo deve conter no minimo 3 caracteres")
+        .max(20, "O campo deve conter no máximo 20 caracteres"),
+    sobrenome: z.string()
+        .min(3, "O campo deve conter no minimo 3 caracteres")
+        .max(20, "O campo deve conter no máximo 20 caracteres"),
+    curso: z.string()
+        .min(3, "O campo deve conter no minimo 3 caracteres")
+        .max(50, "O campo deve conter no máximo 50 caracteres"),
+    instituicao: z.string()
+        .min(3, "O campo deve conter no minimo 3 caracteres")
+        .max(30, "O campo deve conter no máximo 20 caracteres")
+})
+
+export type EditarUserType = z.infer<typeof EditarSchema>

@@ -34,7 +34,7 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
 
 
     return (
-        <header className={`flex flex-col items-center ${!encolhido ? 'h-screen' : 'h-auto'} md:h-auto md:flex-row justify-between pb-12 py-10 md:py-6 px-8 text-2xl md:text-xl`}>
+        <header className={`flex flex-col items-center ${!encolhido ? 'h-screen' : 'h-auto'} md:h-auto md:flex-row justify-between pb-6 md:pb-6 py-6 px-8 text-2xl md:text-xl`}>
             <div className='flex items-center justify-between w-full md:w-auto md:justify-center'>
                 {Icone}
                 <button className={`md:hidden text-2xl transform transition-transform ${encolhido ? 'rotate-0' : 'rotate-180'}`} onClick={HandleList}> {icone}  </button>

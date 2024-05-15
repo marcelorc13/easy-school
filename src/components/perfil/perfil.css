@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.listaPerfil li {
+    @apply flex flex-row gap-4 items-center py-4
+}
