@@ -1,9 +1,9 @@
 import { db } from './firebase'
-import { addDoc, collection } from 'firebase/firestore'
+import { setDoc, doc, getDoc } from 'firebase/firestore'
 
-export const AddProfileInfo = async (user) => {
-    try{
-        await addDoc(collection(db, "Users"), {
+export const AddProfileInfo = async (user, uid) => {
+    try {
+        await setDoc(doc(db, "users", uid), {
             nome: user.nome,
             sobrenome: user.sobrenome,
             curso: user.curso,
@@ -14,4 +14,12 @@ export const AddProfileInfo = async (user) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const GetProfileInfo = async (uid) => {
+    const docRef = doc(db, "users", uid)
+    const docSnap = await getDoc(docRef)
+    const data = docSnap.data()
+    
+    return (data)
 }

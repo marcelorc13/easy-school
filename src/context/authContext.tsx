@@ -6,23 +6,19 @@ export const AuthContext = createContext<any>(null)
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [actualUser, setActualUser] = useState<object>()
 
     useEffect(() => {
         HandleActualUser()
             .then((result) => {
-                console.log(result)
-                setIsLoggedIn(result)
-                setIsLoading(false)
+                setActualUser(result)
             }).catch((error) => {
-                console.log(error)
-                setIsLoading(false)
+                setActualUser(error)
             })
-    }, [HandleActualUser])
+    }, [])
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, isLoading }}>
+        <AuthContext.Provider value={{ actualUser }}>
             {children}
         </AuthContext.Provider>
     );

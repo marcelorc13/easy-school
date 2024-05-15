@@ -8,13 +8,14 @@ import {
     signInWithEmailAndPassword
 } from "firebase/auth";
 import { AddProfileInfo } from "./db"
+import { DeleteLoginCookies, SetLoginCookies } from "@/utils/CookiesDeLogin";
 
 export const HandleCreateUser = async (data) => {
     await createUserWithEmailAndPassword(auth, data.email, data.senha)
         .then(() => {
             console.log("Usuario criado com sucesso")
             console.log(auth.currentUser)
-            AddProfileInfo(data)
+            AddProfileInfo(data, auth.currentUser.uid)
         }).catch((error) => {
             console.log(error)
         })
@@ -26,6 +27,8 @@ export const HandleEmailLogin = (data) => {
         .then((userCredential) => {
             console.log("Logado com sucesso")
             console.log(userCredential.user)
+            SetLoginCookies(userCredential.user.uid)
+
         }).catch((error) => {
             console.log(error.message)
         })
@@ -38,6 +41,8 @@ export const HandleGoogleLogin = () => {
         .then((res) => {
             const credential = GoogleAuthProvider.credentialFromResult(res);
             const user = res.user;
+
+            SetLoginCookies(user.uid)
 
             console.log("Logado com sucesso")
             console.log(user)
@@ -53,7 +58,8 @@ export const HandleGoogleLogin = () => {
 
 export const HandleLogout = () => {
     signOut(auth)
-        .then(() => {
+        .then(async () => {
+            DeleteLoginCookies()
             window.alert('Logout efetuado com sucesso')
         }).catch((error) => {
             console.log(error)
@@ -64,10 +70,12 @@ export const HandleActualUser = async () => {
     return new Promise((resolve, reject) => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                resolve(true)
+                //console.log(user)
+                resolve(user)
             }
             else {
-                reject(false)
+                //console.log("Sem Usuario Logado")
+                reject("Sem Usuario Logado")
             }
         })
     })
