@@ -16,6 +16,9 @@ export const HandleCreateUser = async (data) => {
             console.log("Usuario criado com sucesso")
             console.log(auth.currentUser)
             AddProfileInfo(data, auth.currentUser.uid)
+                .then(() => {
+                    window.location.replace('/login')
+                })
         }).catch((error) => {
             console.log(error)
         })
@@ -28,6 +31,9 @@ export const HandleEmailLogin = (data) => {
             console.log("Logado com sucesso")
             console.log(userCredential.user)
             SetLoginCookies(userCredential.user.uid)
+                .then(() => {
+                    window.location.replace('/')
+                })
 
         }).catch((error) => {
             console.log(error.message)
@@ -59,8 +65,12 @@ export const HandleGoogleLogin = () => {
 export const HandleLogout = () => {
     signOut(auth)
         .then(async () => {
-            DeleteLoginCookies()
             window.alert('Logout efetuado com sucesso')
+            DeleteLoginCookies()
+            .then(() => {
+                window.location.replace('/login')
+            })
+
         }).catch((error) => {
             console.log(error)
         })

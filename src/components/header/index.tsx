@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { IoLogOutOutline, IoReorderThreeSharp, IoClose } from "react-icons/io5";
 import { HandleLogout } from '@/lib/firebase/auth';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     Icone: React.ReactElement;
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ Icone, tela }) => {
+    const router = useRouter()
+
     const [icone, setIcone] = useState<React.ReactElement>(<IoReorderThreeSharp />)
     const [encolhido, setEncolhido] = useState<boolean>(false)
     const [destaque, setDestaque] = useState<string | null>()

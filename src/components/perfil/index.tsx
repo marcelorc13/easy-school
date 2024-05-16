@@ -1,7 +1,6 @@
 'use client'
 import './perfil.css';
 import { useState, useEffect } from 'react';
-import { HandleActualUser } from '@/lib/firebase/auth';
 import { GetProfileInfo } from '@/lib/firebase/db';
 import { DocumentData } from 'firebase/firestore';
 import { IoAtSharp, IoPersonOutline, IoBusinessOutline, IoBookOutline, IoPersonCircleOutline } from "react-icons/io5";
@@ -17,8 +16,7 @@ const PerfilClient: React.FC<Props> = ({ }) => {
 
     useEffect(() => {
         const getUser = async () => {
-            const user = await HandleActualUser()
-            const userData = await GetProfileInfo(user.uid)
+            const userData = await GetProfileInfo()
             setData(userData)
             //console.log(userData)
         }
