@@ -20,7 +20,7 @@ export const AddProfileInfo = async (data) => {
 
 export const AddProfileInfoWithGoogle = async (data) => {
     try {
-        const user = await GetProfileInfo()
+        const user = await HandleActualUser()
         await setDoc(doc(db, "users", user.uid), {
             nome: data.nome,
             sobrenome: data.sobrenome,
@@ -28,7 +28,10 @@ export const AddProfileInfoWithGoogle = async (data) => {
             instituicao: data.instituicao,
             email: user.email,
         })
-        console.log("Informções enviadas com sucesso")
+            .then(() => {
+                console.log("Informções enviadas com sucesso")
+                window.location.replace('/')
+            })
     } catch (error) {
         console.log(error)
     }
@@ -50,11 +53,11 @@ export const EditProfileInfo = async (data) => {
     }
 }
 
-export const GetProfileInfo = async () => {
+export const GetProfileInfo = async (uid) => {
     const user = await HandleActualUser()
-    const docRef = doc(db, "users", user.uid)
+    const docRef = doc(db, "users", `${uid ? uid : user.uid}`)
     const docSnap = await getDoc(docRef)
     const data = docSnap.data()
-    
+
     return (data)
 }

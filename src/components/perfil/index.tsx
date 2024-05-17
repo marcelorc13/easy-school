@@ -1,9 +1,10 @@
 'use client'
 import './perfil.css';
 import { useState, useEffect } from 'react';
+import { HandleLogout } from '@/lib/firebase/auth';
 import { GetProfileInfo } from '@/lib/firebase/db';
 import { DocumentData } from 'firebase/firestore';
-import { IoAtSharp, IoPersonOutline, IoBusinessOutline, IoBookOutline, IoPersonCircleOutline } from "react-icons/io5";
+import { IoAtSharp, IoPersonOutline, IoBusinessOutline, IoBookOutline, IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
 import Link from 'next/link';
 
 interface Props {
@@ -40,7 +41,11 @@ const PerfilClient: React.FC<Props> = ({ }) => {
                         <li><IoBookOutline />{data.curso}</li>
                         <li className=' border-t border-b border-t-secundaria border-b-secundaria'><IoBusinessOutline />{data.instituicao}</li>
                     </ul>
-                    <Link href={'/perfil/editar'} className='bg-terciaria rounded-lg px-2 py-1 cursor-pointer'>Editar Perfil</Link>
+                    <div className='flex flex-col gap-2 md:gap-12 md:flex-row'>
+                        <Link href={'/perfil/editar'} className='bg-terciaria rounded-lg px-2 py-1 cursor-pointer'>Editar Perfil</Link>
+                        <button onClick={HandleLogout} className='bg-red-400 rounded-lg px-2 py-1 cursor-pointer flex items-center gap-1 self-center'>Sair<IoLogOutOutline /></button>
+                    </div>
+
                 </div>
             )
                 : null}

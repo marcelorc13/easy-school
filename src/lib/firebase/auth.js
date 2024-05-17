@@ -7,7 +7,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword
 } from "firebase/auth";
-import { AddProfileInfo } from "./db"
+import { AddProfileInfo, GetProfileInfo } from "./db"
 import { DeleteLoginCookies, SetLoginCookies } from "@/utils/auth/CookiesDeLogin";
 
 export const HandleCreateUser = async (data) => {
@@ -47,11 +47,20 @@ export const HandleGoogleLogin = () => {
         .then((res) => {
             const credential = GoogleAuthProvider.credentialFromResult(res);
             const user = res.user;
-
-            SetLoginCookies(user.uid)
-
             console.log("Logado com sucesso")
             console.log(user)
+
+            SetLoginCookies(user.uid)
+                .then(async () => {
+                    const userInfo = await GetProfileInfo(user.uid)
+                    if (userInfo == undefined) {
+                        window.location.replace('/login/informacoes')
+                    }
+                    else {
+                        window.location.replace('/')
+                    }
+                })
+
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -67,9 +76,9 @@ export const HandleLogout = () => {
         .then(async () => {
             window.alert('Logout efetuado com sucesso')
             DeleteLoginCookies()
-            .then(() => {
-                window.location.replace('/login')
-            })
+                .then(() => {
+                    window.location.replace('/login')
+                })
 
         }).catch((error) => {
             console.log(error)

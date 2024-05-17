@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
-import { GetServerSideProps } from "next"
-import { cookies } from "next/headers"
 
 export const middleware = (request: NextRequest) => {
-
-    const userLogado = cookies().get('user-logado')
-
+    const userLogado = request.cookies.get('user-logado')
+    
     if (userLogado) {
         return NextResponse.next()
     }
@@ -14,5 +11,5 @@ export const middleware = (request: NextRequest) => {
 }
 
 export const config = {
-    matcher: ['/', '/horario', '/materias', '/notas', '/perfil', '/perfil/editar']
+    matcher: ['/', '/horario', '/materias', '/notas', '/perfil', '/perfil/editar', '/login/informacoes']
 }
