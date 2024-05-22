@@ -48,7 +48,7 @@ const Header: React.FC<Props> = ({ Icone, tela }) => {
                     <ul className='flex flex-col items-center md:flex-row gap-4 md:gap-4'>
                         <li><Link className={destaque === 'home' ? 'destacado' : ''} href={"/"}> Home </Link></li>
                         <li><Link className={destaque === 'horario' ? 'destacado' : ''} href={"/horario"}> Horário </Link></li>
-                        <li><Link className={destaque === 'materias' ? 'destacado' : ''} href={"/"}> Matérias </Link></li>
+                        <li><Link className={destaque === 'materias' ? 'destacado' : ''} href={"/materias"}> Matérias </Link></li>
                         <li><Link className={destaque === 'notas' ? 'destacado' : ''} href={"/"}> Notas </Link></li>
                     </ul>
 

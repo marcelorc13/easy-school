@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.formAdicionar {
+    @apply flex flex-col gap-4 w-full px-12 md:px-32 lg:px-40 xl:px-64
+}
+
+.formAdicionar div {
+    @apply flex flex-col
+}
+
+.formAdicionar div input {
+    @apply px-2 py-2 rounded-xl bg-secundaria border border-quaternaria border-opacity-50
+}
+
+.formAdicionar div select {
+    @apply px-2 py-2 rounded-xl bg-secundaria border border-quaternaria border-opacity-50
+}
+
+.formAdicionar div div {
+    @apply w-full
+}
