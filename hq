@@ -1,0 +1,17 @@
+[33mf59e22a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Criando função base de criação de materias
+[33mf1dffaa[m[33m ([m[1;31morigin/main[m[33m)[m Adicionar informações de perfil após Login com o Google
+[33m64b4ef6[m Redirecionamento apos Login, Cadastro e Logout
+[33me51dea1[m Criação da pagina de perfil com feature de editar informações do perfil
+[33m4df1f16[m Criando autenticação de usuario logado com middleware
+[33m489e85b[m Responsividade das paginas de login e cadastro
+[33mf709435[m Criando paginas de carregamento e erros
+[33m187e45a[m Base da responsividade do Header
+[33m055397c[m Criando contexto
+[33me5c8e78[m Finalizando a base da criação de perfil e login
+[33mda74e75[m Atualizando gitignore
+[33m1a1a8ac[m Base dos processos de criação e login de perfil
+[33md23c51a[m Criação e estilização das paginas de Login e Cadastro
+[33m1c037e3[m Implementando a base do firebase no projeto
+[33mfd29f95[m Criando Função de Adicionar Aula
+[33md99e9f7[m Incio do Header
+[33mc4c130a[m Initial commit from Create Next App

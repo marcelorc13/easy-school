@@ -1,6 +1,6 @@
 import { HandleActualUser } from './auth'
 import { db } from './firebase'
-import { setDoc, doc, getDoc, updateDoc, collection } from 'firebase/firestore'
+import { setDoc, doc, getDoc, getDocs, updateDoc, collection, query } from 'firebase/firestore'
 
 export const AddProfileInfo = async (data) => {
     try {
@@ -65,9 +65,9 @@ export const GetProfileInfo = async (uid) => {
 export const CreateMateria = async (data) => {
     try {
         const user = await HandleActualUser()
-        const docRef = doc(db, 'users', user.uid, 'materias', data.nome)
+        const docRef = collection(db, 'users', user.uid, 'materias')
 
-        setDoc(docRef, {
+        setDoc(doc(docRef), {
             nome: data.nome,
             professor: data.professor,
             modalidade: data.modalidade
@@ -80,11 +80,15 @@ export const CreateMateria = async (data) => {
     }
 }
 
-// export const GetMaterias = async () => {
-//     const user = await HandleActualUser()
-//     const docRef = doc(db, 'users', user.uid, 'materias')
-//     const docSnap = await getDoc(docRef)
-//     const data = docSnap.data()
+export const GetMaterias = async () => {
+    const user = await HandleActualUser()
+    const docRef = collection(db, 'users', user.uid, 'materias')
+    const q = query(docRef)
+    const queryRef = await getDocs(q)
+    const materias = []
+    queryRef.forEach((doc) => {
+        materias.push(doc.data())
+    })
 
-//     return (data)
-// }
+    return materias
+}
