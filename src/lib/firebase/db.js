@@ -87,8 +87,20 @@ export const GetMaterias = async () => {
     const queryRef = await getDocs(q)
     const materias = []
     queryRef.forEach((doc) => {
-        materias.push(doc.data())
+        const data = doc.data()
+        data.id = doc.id
+        materias.push(data)
     })
 
-    return materias
+    return materias 
+}
+
+export const GetMateria = async (id) => {
+    const user = await HandleActualUser()
+    const docRef = doc(db, 'users', user.uid, 'materias', id)
+    const docData = await getDoc(docRef)
+    const data = docData.data()
+    //console.log(docData.data())
+
+    return data
 }

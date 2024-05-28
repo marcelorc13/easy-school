@@ -4,6 +4,7 @@ import { AdicionarMateriaSchema, AdicionarMateriaType } from '@/utils/auth/valid
 import './adicionar.css'
 import { useState, useEffect } from 'react';
 import { CreateMateria } from '@/lib/firebase/db';
+import { useRouter } from 'next/navigation';
 // import AdicionarAula from './adicionar-aula';
 
 interface Props {
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const AdicionarMaterias: React.FC<Props> = ({ }) => {
+
+    const router = useRouter()
 
     const [materia, setMateria] = useState<AdicionarMateriaType>({
         nome: '',
@@ -28,9 +31,9 @@ const AdicionarMaterias: React.FC<Props> = ({ }) => {
     const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         AdicionarMateriaSchema.parse(materia)
-        console.log(materia)
-
         CreateMateria(materia)
+        window.alert("Materia criada com sucesso")
+        router.refresh()
     }
 
     return (

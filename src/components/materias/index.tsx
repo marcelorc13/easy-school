@@ -1,8 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import AdicionarMaterias from './adicionar-materias';
 import { GetMaterias } from '@/lib/firebase/db';
 import { IoArrowDownOutline, IoArrowUpOutline } from "react-icons/io5";
+import Link from 'next/link';
 
 interface Props {
 
@@ -11,7 +12,8 @@ interface Props {
 interface Materia {
     nome: string,
     professor: string,
-    modalidade: string
+    modalidade: string,
+    id: string
 }
 
 const MateriasClient: React.FC<Props> = ({ }) => {
@@ -40,11 +42,11 @@ const MateriasClient: React.FC<Props> = ({ }) => {
                     <h1 className='text-2xl'>Minhas matérias:</h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6'>
                         {materias.map((materia, index) => (
-                            <div key={index} className='flex flex-col gap-1 py-2 px-4 rounded-2xl border border-quaternaria border-opacity-50'>
+                            <Link href={`materias/${materia.id}`} id={materia.id} key={index} className='flex flex-col gap-1 py-2 px-4 rounded-2xl border border-quaternaria border-opacity-50 cursor-pointer'>
                                 <p>Materia: {materia.nome}</p>
                                 <p>Professor: {materia.professor}</p>
                                 <p>Modalidade: {materia.modalidade}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>
@@ -61,7 +63,7 @@ const MateriasClient: React.FC<Props> = ({ }) => {
                 :
                 <div className='flex flex-col items-center w-full gap-2'>
                     <div className='flex flex-row justify-center gap-2'>
-                        <label className='cursor-pointer' htmlFor="btnFechar">Fechar</label>
+                        <label className='cursor-pointer' htmlFor="btnFechar">Esconder</label>
                         <button id='btnFechar' name='btnFechar' onClick={() => setEncolhido(true)}><IoArrowUpOutline /></button>
                     </div>
                     <AdicionarMaterias />
