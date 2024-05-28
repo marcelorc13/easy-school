@@ -52,7 +52,7 @@ const AdicionarMaterias: React.FC<Props> = ({ }) => {
 
                 <div>
                     <label htmlFor="modalidade">Modalidade: </label>
-                    <select onChange={HandleChange} name="modalidade" id="modalidade" value={materia.modalidade}>
+                    <select className='cursor-pointer' onChange={HandleChange} name="modalidade" id="modalidade" value={materia.modalidade}>
                         <option hidden disabled value=''>Presencial/Online</option>
                         <option value="Presencial">Presencial</option>
                         <option value="Online">Online</option>

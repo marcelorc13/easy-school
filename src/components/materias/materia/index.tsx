@@ -1,7 +1,10 @@
 'use client'
-import { GetMateria } from '@/lib/firebase/db';
+import { DeleteMateria, GetMateria } from '@/lib/firebase/db';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { DocumentData } from 'firebase/firestore';
+import { IoArrowBackOutline } from "react-icons/io5";
+
 
 interface Props {
     id: string;
@@ -26,11 +29,13 @@ const MateriaClient: React.FC<Props> = ({ id }) => {
 
     return (
         <main>
+            <Link href={'/materias'}><IoArrowBackOutline /></Link>
             {materia ?
                 <section>
                     <p>Materia: {materia.nome}</p>
                     <p>Professor: {materia.professor}</p>
                     <p>Modalidade: {materia.modalidade}</p>
+                    <button onClick={() =>  DeleteMateria(id)}>Excluir Materia</button>
                 </section>
                 :
                 null}

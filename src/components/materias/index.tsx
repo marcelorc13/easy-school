@@ -42,7 +42,7 @@ const MateriasClient: React.FC<Props> = ({ }) => {
                     <h1 className='text-2xl'>Minhas matérias:</h1>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6'>
                         {materias.map((materia, index) => (
-                            <Link href={`materias/${materia.id}`} id={materia.id} key={index} className='flex flex-col gap-1 py-2 px-4 rounded-2xl border border-quaternaria border-opacity-50 cursor-pointer'>
+                            <Link href={`materias/${materia.id}`} id={materia.id} key={index} className='flex flex-col gap-1 py-2 px-4 rounded-2xl border border-quaternaria border-opacity-50 shadow-xl cursor-pointer hover:scale-105 transition duration-200'>
                                 <p>Materia: {materia.nome}</p>
                                 <p>Professor: {materia.professor}</p>
                                 <p>Modalidade: {materia.modalidade}</p>

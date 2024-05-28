@@ -1,6 +1,6 @@
 import { HandleActualUser } from './auth'
 import { db } from './firebase'
-import { setDoc, doc, getDoc, getDocs, updateDoc, collection, query } from 'firebase/firestore'
+import { setDoc, doc, getDoc, getDocs, updateDoc, collection, query, deleteDoc } from 'firebase/firestore'
 
 export const AddProfileInfo = async (data) => {
     try {
@@ -92,7 +92,7 @@ export const GetMaterias = async () => {
         materias.push(data)
     })
 
-    return materias 
+    return materias
 }
 
 export const GetMateria = async (id) => {
@@ -103,4 +103,16 @@ export const GetMateria = async (id) => {
     //console.log(docData.data())
 
     return data
+}
+
+export const DeleteMateria = async (id) => {
+    const user = await HandleActualUser()
+    const docRef = doc(db, 'users', user.uid, 'materias', id)
+    await deleteDoc(docRef)
+        .then(() => {
+            window.alert('Materia Excluída com Sucesso')
+            window.location.replace('/materias')
+        }).catch((error)=>{
+            console.log(error)
+        })
 }
