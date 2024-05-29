@@ -53,7 +53,7 @@ export const AdicionarMateriaSchema = z.object({
         .max(50, "O campo deve conter no máximo 50 caracteres"),
     professor: z.string()
         .min(4, "O campo deve conter no minimo 4 caracteres")
-        .max(15, "O campo deve conter no máximo 15 caracteres"),
+        .max(30, "O campo deve conter no máximo 30 caracteres"),
     modalidade: z.string()
         .min(1)
 })

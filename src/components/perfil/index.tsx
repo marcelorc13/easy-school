@@ -25,7 +25,7 @@ const PerfilClient: React.FC<Props> = ({ }) => {
     }, [])
 
     return (
-        <main className='md:mx-4 px-8 md:py-6 md:rounded-2xl md:shadow-xl md:bg-secundaria flex flex-col gap-2 md:text-xl'>
+        <main className='md:mx-24 lg:mx-52 xl:mx-60 px-8 md:py-6 md:rounded-2xl md:shadow-xl md:bg-secundaria flex flex-col gap-2 md:text-xl '>
             <div className='flex items-center justify-center text-8xl mdtext-9xl'>
                 <IoPersonCircleOutline />
             </div>
@@ -34,7 +34,7 @@ const PerfilClient: React.FC<Props> = ({ }) => {
             </div>
 
             {data ? (
-                <div className='flex flex-col items-center gap-4'>
+                <div className='flex flex-col items-center gap-4 '>
                     <ul className='listaPerfil flex flex-col'>
                         <li className=' border-t border-b border-t-secundaria border-b-secundaria'><IoPersonOutline /> {data.nome} {data.sobrenome}</li>
                         <li className=' border-b border-b-secundaria'><IoAtSharp />{data.email}</li>

@@ -18,7 +18,7 @@ const MateriaClient: React.FC<Props> = ({ id }) => {
             try {
                 const m = await GetMateria(id)
                 setMateria(m)
-                console.log(m)
+                //console.log(m)
             }
             catch (error) {
                 console.log(error)
@@ -31,11 +31,12 @@ const MateriaClient: React.FC<Props> = ({ id }) => {
         <main>
             <Link href={'/materias'}><IoArrowBackOutline /></Link>
             {materia ?
-                <section>
+                <section className='flex flex-col gap-2 items-center'>
                     <p>Materia: {materia.nome}</p>
                     <p>Professor: {materia.professor}</p>
                     <p>Modalidade: {materia.modalidade}</p>
                     <button onClick={() =>  DeleteMateria(id)}>Excluir Materia</button>
+                    <Link href={`/materias/${id}/editar`}>Editar Materia</Link>
                 </section>
                 :
                 null}

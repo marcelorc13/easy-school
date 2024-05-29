@@ -46,8 +46,10 @@ export const EditProfileInfo = async (data) => {
             curso: data.curso,
             instituicao: data.instituicao,
         })
-        window.alert("Informções editadas com sucesso")
-        window.location.replace('/perfil')
+            .then(() => {
+                window.alert("Informções editadas com sucesso")
+                window.location.replace('/perfil')
+            })
     } catch (error) {
         console.log(error)
     }
@@ -112,7 +114,25 @@ export const DeleteMateria = async (id) => {
         .then(() => {
             window.alert('Materia Excluída com Sucesso')
             window.location.replace('/materias')
-        }).catch((error)=>{
+        }).catch((error) => {
             console.log(error)
         })
+}
+
+export const EditMateria = async (id, data) => {
+    try {
+        const user = await HandleActualUser()
+        const docRef = doc(db, 'users', user.uid, 'materias', id)
+
+        await updateDoc(docRef, {
+            nome: data.nome,
+            professor: data.professor,
+            modalidade: data.modalidade
+        })
+
+        console.log('Materia Editada com sucesso')
+
+    } catch (error) {
+        console.log(error)
+    }
 }
