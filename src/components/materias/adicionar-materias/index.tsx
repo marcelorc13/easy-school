@@ -3,7 +3,7 @@
 import { AdicionarMateriaSchema, AdicionarMateriaType } from '@/utils/auth/validarForms';
 import './adicionar.css'
 import { useState, useEffect } from 'react';
-import { CreateMateria } from '@/lib/firebase/db';
+import { CreateMateria } from '@/lib/firebase/db/materias';
 import { useRouter } from 'next/navigation';
 // import AdicionarAula from './adicionar-aula';
 

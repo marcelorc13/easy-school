@@ -2,7 +2,7 @@
 import './perfil.css';
 import { useState, useEffect } from 'react';
 import { HandleLogout } from '@/lib/firebase/auth';
-import { GetProfileInfo } from '@/lib/firebase/db';
+import { GetProfileInfo } from '@/lib/firebase/db/perfil';
 import { DocumentData } from 'firebase/firestore';
 import { IoAtSharp, IoPersonOutline, IoBusinessOutline, IoBookOutline, IoPersonCircleOutline, IoLogOutOutline } from "react-icons/io5";
 import Link from 'next/link';

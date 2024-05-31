@@ -1,7 +1,7 @@
 'use client'
 
 import './editar.css'
-import { EditMateria } from '@/lib/firebase/db';
+import { EditMateria } from '@/lib/firebase/db/materias';
 import { AdicionarMateriaSchema, AdicionarMateriaType } from '@/utils/auth/validarForms';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -36,12 +36,12 @@ const EditarMateriaClient: React.FC<Props> = ({ }) => {
         e.preventDefault()
         AdicionarMateriaSchema.parse(materia)
         EditMateria(id, materia)
-            .then(() => {
-                window.alert("Materia Editada com sucesso")
-                router.push('/materias')
-            }).catch((error) => {
-                console.log(error)
-            })
+                        .then(() => {
+                            window.alert("Materia Editada com sucesso")
+                            router.push('/materias')
+                        }).catch((error) => {
+                            console.log(error)
+                        })
 
     }
 

@@ -2,7 +2,7 @@
 import './editar.css'
 import { useState, useEffect } from 'react';
 import { IoPersonOutline, IoBusinessOutline, IoBookOutline } from "react-icons/io5";
-import { EditProfileInfo, GetProfileInfo } from '@/lib/firebase/db';
+import { EditProfileInfo, GetProfileInfo } from '@/lib/firebase/db/perfil';
 import { DocumentData } from 'firebase/firestore';
 import { EditarSchema, EditarUserType } from '@/utils/auth/validarForms';
 import Loading from '@/app/loading';

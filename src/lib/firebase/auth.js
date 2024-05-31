@@ -7,7 +7,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword
 } from "firebase/auth";
-import { AddProfileInfo, GetProfileInfo } from "./db"
+import { AddProfileInfo, GetProfileInfo } from "./db/perfil"
 import { DeleteLoginCookies, SetLoginCookies } from "@/utils/auth/CookiesDeLogin";
 
 export const HandleCreateUser = async (data) => {

@@ -4,7 +4,7 @@ import './adicionar.css'
 import { useState, useEffect } from 'react';
 import { IoPersonOutline, IoBusinessOutline, IoBookOutline } from "react-icons/io5";
 import { EditarSchema, EditarUserType } from '@/utils/auth/validarForms';
-import { AddProfileInfoWithGoogle } from '@/lib/firebase/db';
+import { AddProfileInfoWithGoogle } from '@/lib/firebase/db/perfil';
 
 interface Props {
 

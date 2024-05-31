@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, Suspense } from 'react';
 import AdicionarMaterias from './adicionar-materias';
-import { GetMaterias } from '@/lib/firebase/db';
+import { GetMaterias } from '@/lib/firebase/db/materias';
 import { IoArrowDownOutline, IoArrowUpOutline } from "react-icons/io5";
 import Link from 'next/link';
 

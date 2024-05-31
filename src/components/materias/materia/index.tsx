@@ -1,5 +1,5 @@
 'use client'
-import { DeleteMateria, GetMateria } from '@/lib/firebase/db';
+import { DeleteMateria, GetMateria } from '@/lib/firebase/db/materias';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { DocumentData } from 'firebase/firestore';
