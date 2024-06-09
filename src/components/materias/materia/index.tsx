@@ -18,14 +18,13 @@ const MateriaClient: React.FC<Props> = ({ id }) => {
             try {
                 const m = await GetMateria(id)
                 setMateria(m)
-                //console.log(m)
             }
             catch (error) {
                 console.log(error)
             }
         }
         get()
-    }, [])
+    }, [id])
 
     return (
         <main>
@@ -36,6 +35,7 @@ const MateriaClient: React.FC<Props> = ({ id }) => {
                     <p>Professor: {materia.professor}</p>
                     <p>Modalidade: {materia.modalidade}</p>
                     <button onClick={() =>  DeleteMateria(id)}>Excluir Materia</button>
+                    <Link href={`/materias/${id}/adicionar-aula`}>Adicionar Aula</Link>
                     <Link href={`/materias/${id}/editar`}>Editar Materia</Link>
                 </section>
                 :

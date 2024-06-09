@@ -25,7 +25,9 @@ const MateriasClient: React.FC<Props> = ({ }) => {
         try {
             const m = await GetMaterias()
             setMaterias(m)
-            console.log(m)
+            if(m.length == 0) {
+                setEncolhido(false)
+            }
         } catch (error) {
             console.log(error)
         }

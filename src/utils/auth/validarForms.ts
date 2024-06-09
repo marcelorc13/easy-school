@@ -59,3 +59,17 @@ export const AdicionarMateriaSchema = z.object({
 })
 
 export type AdicionarMateriaType = z.infer<typeof AdicionarMateriaSchema>
+
+export const AdicionarAulaSchema = z.object({
+    dia: z.string()
+        .min(1),
+    sala: z.string()
+        .min(2, "O campo deve conter no minimo 2 caracteres")
+        .max(20, "O campo deve conter no máximo 20 caracteres"),
+    horarioInicial: z.string()
+        .min(1),
+    horarioFinal: z.string()
+        .min(1),
+})
+
+export type AdicionarAulaType = z.infer<typeof AdicionarAulaSchema>
