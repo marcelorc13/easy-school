@@ -1,4 +1,4 @@
-import AdicionarAulaClient from "@/components/materias/materia/adicionar-aula";
+import AdicionarAulaClient from "@/components/aula/adicionar-aula";
 
 const AdicionarAula = () => {
     return (
